@@ -8,7 +8,4 @@ Buka `index.html` di browser. Simpan `download.jpg` dan `profile-photo.jpeg` di 
 
 ## Deploy ke Vercel
 
-1. Push repository ini ke GitHub.
-2. Di Vercel, pilih **Add New → Project** lalu impor repository `remodit/Profile`.
-3. Biarkan framework preset sebagai **Other** dan root directory sebagai `./`.
-4. Deploy. Tidak perlu build command atau output directory.
+Repository ini terhubung ke Vercel. Setiap commit ke branch `main` akan memicu deployment otomatis. Tidak perlu build command atau output directory.
