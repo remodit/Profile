@@ -176,26 +176,6 @@
     .image-label .name { font-size: 17px; font-weight: 600; }
     .image-label .role { margin-top: 5px; color: #d1d0d3; font-size: 12px; }
 
-    .change-image {
-      display: inline-flex;
-      flex: 0 0 auto;
-      align-items: center;
-      gap: 7px;
-      padding: 9px 11px;
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 999px;
-      color: white;
-      background: rgba(16,19,28,.55);
-      font-size: 11px;
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-      transition: background .2s ease;
-    }
-
-    .change-image:hover { background: rgba(16,19,28,.85); }
-    .change-image svg { width: 13px; height: 13px; }
-    #image-input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-
     .floating-note {
       position: absolute;
       top: 13%;
@@ -381,20 +361,11 @@
 
     .visual::before { display: none; }
     .portrait { border: 0; border-radius: 13px; background: #293a72; box-shadow: 0 18px 42px rgba(21, 28, 67, .22); }
-    .portrait img { object-position: center 50%; opacity: 1; }
+    .portrait img { object-position: center 35%; opacity: 1; }
     .portrait::after { inset: 44% 0 0; background: linear-gradient(transparent, rgba(9, 12, 30, .76)); }
     .image-label { right: 18px; bottom: 17px; left: 18px; }
     .image-label .name { font-size: 15px; }
     .image-label .role { color: rgba(255,255,255,.8); }
-
-    .change-image {
-      padding: 8px 10px;
-      border-color: rgba(255,255,255,.5);
-      border-radius: 6px;
-      background: rgba(13, 15, 27, .45);
-    }
-
-    .change-image:hover { background: rgba(13, 15, 27, .75); }
 
     .floating-note {
       top: auto;
@@ -528,20 +499,11 @@
     .copy strong { color: #fff; }
     .visual { width: min(100%, 390px); aspect-ratio: 1 / 1; }
     .portrait { border: 1px solid rgba(175, 193, 255, .32); border-radius: 12px; background: #151c50; box-shadow: 0 20px 54px rgba(0, 0, 0, .34); }
-    .portrait img { object-position: center 50%; opacity: 1; }
+    .portrait img { object-position: center 35%; opacity: 1; }
     .portrait::after { inset: 58% 0 0; background: linear-gradient(transparent, rgba(7, 11, 32, .82)); }
     .image-label { right: 16px; bottom: 15px; left: 16px; }
     .image-label .name { font-size: 15px; }
     .image-label .role { color: #d0d8f5; font-size: 11px; }
-
-    .change-image {
-      padding: 8px 10px;
-      border-color: rgba(210, 221, 255, .45);
-      border-radius: 6px;
-      background: rgba(8, 13, 39, .62);
-    }
-
-    .change-image:hover { background: rgba(8, 13, 39, .88); }
 
     .navigation {
       top: 38px;
@@ -615,22 +577,18 @@
 
       <div class="visual">
         <div class="portrait" id="portrait">
-          <img id="portrait-image" src="download.jpg" alt="Ilustrasi dunia fantasi dengan pepohonan bercahaya">
+          <img src="profile-photo.jpeg" alt="Foto Adit">
           <div class="image-label">
             <div>
               <p class="name">Rachni Adithya Rachman</p>
               <p class="role" id="image-role">Pria Modal Doa.</p>
+              
             </div>
-            <label class="change-image" for="image-input" title="Ganti gambar profil">
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 5.5h2l1-1.5h5l1 1.5h2v7h-11v-7Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="8.8" r="2.2" stroke="currentColor" stroke-width="1.2"/></svg>
-              Ganti foto
-            </label>
-            <input id="image-input" type="file" accept="image/*" aria-label="Pilih gambar profil baru">
+           
           </div>
         </div>
       </div>
     </section>
-    <p class="sr-only" id="announcement" aria-live="polite"></p>
   </main>
 
   <script>
@@ -640,9 +598,6 @@
     const eyebrow = document.querySelector("#eyebrow");
     const copy = document.querySelector("#copy");
     const panel = document.querySelector("#content-panel");
-    const announcement = document.querySelector("#announcement");
-    const imageInput = document.querySelector("#image-input");
-    const portraitImage = document.querySelector("#portrait-image");
 
     const views = {
       home: {
@@ -694,29 +649,6 @@
         event.preventDefault();
         selectTab(tabs[nextIndex], true);
       });
-    });
-
-    imageInput.addEventListener("change", () => {
-      const file = imageInput.files && imageInput.files[0];
-      if (!file) return;
-      if (!file.type.startsWith("image/")) {
-        announcement.textContent = "File yang dipilih bukan gambar. Silakan pilih file gambar.";
-        imageInput.value = "";
-        return;
-      }
-      const reader = new FileReader();
-      reader.addEventListener("load", () => {
-        if (typeof reader.result !== "string") {
-          announcement.textContent = "Gambar tidak dapat dibaca. Silakan coba file lain.";
-          return;
-        }
-        portraitImage.src = reader.result;
-        announcement.textContent = `Foto profil diganti dengan ${file.name}.`;
-      });
-      reader.addEventListener("error", () => {
-        announcement.textContent = "Gambar tidak dapat dibaca. Silakan coba file lain.";
-      });
-      reader.readAsDataURL(file);
     });
 
   </script>

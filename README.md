@@ -4,7 +4,7 @@ Homepage pribadi statis Adit, dibuat dengan HTML, CSS, dan JavaScript tanpa pros
 
 ## Jalankan secara lokal
 
-Buka `index.html` di browser. Simpan `download.jpg` di folder yang sama karena gambar tersebut digunakan sebagai tema latar dan gambar utama.
+Buka `index.html` di browser. Simpan `download.jpg` dan `profile-photo.jpeg` di folder yang sama. `download.jpg` digunakan sebagai tema latar, sedangkan `profile-photo.jpeg` adalah foto profil tetap.
 
 ## Deploy ke Vercel
 
